@@ -1,0 +1,21 @@
+
+schema {
+    query: Query
+}
+
+type User {
+    id: Long
+    firstName: String
+    lastName: String
+
+    # these items do not exist in the User entiry itself and so have to be resolved by the
+    # UserResolver class which will look them up on demand
+    totalSpent: Float
+    maximumSpent: Float
+}
+
+type Query {
+    allUsers : [User]
+    users(ids: [Long]) : [User]
+    user(id: Long) : User
+}
